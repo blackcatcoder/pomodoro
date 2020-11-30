@@ -1,8 +1,6 @@
 #!/bin/bash
 path=$(pwd)
 
-res=$(notify-sed "testing")
-
 echo "[Desktop Entry]
 Type=Application
 Version=1.0

@@ -13,8 +13,8 @@ thisSessionDate=0
 currentPid=os.getpid()
 
 #in seconds
-WORK_TIME=5#25*60
-BREAK_TIME=2#5*60
+WORK_TIME=25*60
+BREAK_TIME=5*60
 
 class nf(Enum):
 	START=1
