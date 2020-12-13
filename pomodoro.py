@@ -88,14 +88,15 @@ def get_sessions():
 	except:
 		tmp=-1
 
-	if tmp>0:
-		noOfSessions=tmp;
-	else:
-		noOfSessions=0
-	if date>0:
-		thisSessionDate=date
-	else:
+	if datetime.date.today().day!=date:
 		thisSessionDate=datetime.date.today().day
+		noOfSessions=0
+	else:
+		thisSessionDate=date
+		if tmp>0:
+			noOfSessions=tmp
+		else:
+			noOfSessions=0
 	fh.close()
 
 def pid_exists(pid):
@@ -121,13 +122,9 @@ def start_working():
 
 	sleep(WORK_TIME)
 	with open("data","w") as fh:
-		if datetime.date.today().day!=thisSessionDate:
-			tmpDate=datetime.date.today().day
-			tmpSess=1
-		else:
-			tmpDate=thisSessionDate
-			tmpSess=noOfSessions+1
-		fh.write(f'{tmpDate}\n{tmpSess}')
+		tmpDate=thisSessionDate
+		tmpSess=noOfSessions+1
+		fh.write(f'{thisSessionDate}\n{noOfSessions+1}')
 	take_break()
 
 def take_break():
